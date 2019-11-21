@@ -10,11 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    public let customView: CustomView! = CustomView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        //customViewを追加
+        view.addSubview(customView)
     }
-
-
+    
+    override func viewWillLayoutSubviews() {
+        //customViewのframeをセット
+        customView.frame = CGRect(x: view.safeAreaInsets.left, y: view.safeAreaInsets.top, width: view.frame.size.width - (view.safeAreaInsets.left + view.safeAreaInsets.right), height: view.frame.size.height - (view.safeAreaInsets.top + view.safeAreaInsets.bottom))
+    }
+    
+    
 }
-
