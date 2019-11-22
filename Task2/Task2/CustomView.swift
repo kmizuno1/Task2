@@ -14,36 +14,42 @@ class CustomView: UIView {
     let button_login = UIButton()
     let button_logout = UIButton()
     let button_setting = UIButton()
+    let labelSwitch = LabelSwitch()
         
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         //パーツの情報を設定
-        //ラベル
+        //ラベル1
         label_loginDate.text = "前回ログイン日時 2019/11/07 12:00:00"
         label_loginDate.font = UIFont.systemFont(ofSize: 16)
-        //ログインボタン
+        //ボタン1
         button_login.setTitle("ログイン", for: .normal)
         button_login.setTitleColor(.blue, for: .normal)
         button_login.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button_login.isHidden = false
         button_login.addTarget(self, action: #selector(loginButtonEvent(_:)), for: .touchUpInside)
-        //ログアウトボタン
+        //ボタン2
         button_logout.setTitle("ログアウト", for: .normal)
         button_logout.setTitleColor(.blue, for: .normal)
         button_logout.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button_logout.isHidden = true
         button_logout.addTarget(self, action: #selector(logoutButtonEvent(_:)), for: .touchUpInside)
-        //各種設定ボタン
+        //ボタン3
         button_setting.setTitle("各種設定", for: .normal)
         button_setting.setTitleColor(.blue, for: .normal)
         button_setting.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        //スイッチ1
+        labelSwitch._label.text = "自動ログイン"
+        labelSwitch._label.font = UIFont.systemFont(ofSize: 16)
+        labelSwitch._switch.isOn = false
         
         //パーツを追加
         addSubview(label_loginDate)
         addSubview(button_login)
         addSubview(button_logout)
         addSubview(button_setting)
+        addSubview(labelSwitch)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,6 +63,7 @@ class CustomView: UIView {
         let loginSize = button_login.sizeThatFits(button_login.frame.size)
         let logoutSize = button_logout.sizeThatFits(button_logout.frame.size)
         let settingSize = button_setting.sizeThatFits(button_setting.frame.size)
+        let labelSwitchSize = labelSwitch.sizeThatFits(labelSwitch.frame.size)
         var x = self.frame.width - safeAreaInsets.right - 10 - settingSize.width
         let y = safeAreaInsets.top
         
@@ -66,6 +73,8 @@ class CustomView: UIView {
         button_logout.frame = CGRect(x: x, y: y, width: logoutSize.width, height: logoutSize.height)
         x = x - 10 - loginSize.width
         button_login.frame = CGRect(x: x, y: y, width: loginSize.width, height: loginSize.height)
+        x = x - 10 - labelSwitchSize.width
+        labelSwitch.frame = CGRect(x: x, y: y, width: labelSwitchSize.width, height: labelSwitchSize.height)
         x = x - 20
         label_loginDate.frame = CGRect(x: 10 + safeAreaInsets.left, y: y + 6, width: x, height: labelSize.height)
     }
