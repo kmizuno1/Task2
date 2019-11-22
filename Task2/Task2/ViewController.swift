@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    public let customView: CustomView! = CustomView()
+    let customView: CustomView! = CustomView()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,10 +10,10 @@ import UIKit
 
 class CustomView: UIView {
     
-    let label_loginDate: UILabel = UILabel()
-    let button_login: UIButton = UIButton()
-    let button_logout: UIButton = UIButton()
-    let button_setting: UIButton = UIButton()
+    let label_loginDate = UILabel()
+    let button_login = UIButton()
+    let button_logout = UIButton()
+    let button_setting = UIButton()
         
     override init(frame: CGRect) {
         super.init(frame: frame)
