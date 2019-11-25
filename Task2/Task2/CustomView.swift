@@ -66,12 +66,17 @@ class CustomView: UIView {
         let labelSwitchSize = labelSwitch.sizeThatFits(labelSwitch.frame.size)
         var x = self.frame.width - safeAreaInsets.right - 10 - settingSize.width
         let y = safeAreaInsets.top
+        var n: CGFloat
         
         //ボタンとラベルのframeをセット
         button_setting.frame = CGRect(x: x, y: y, width: settingSize.width, height: settingSize.height)
-        x = x - 10 - logoutSize.width
+        if button_login.isHidden {
+            n = logoutSize.width
+        }else{
+            n = loginSize.width
+        }
+        x = x - 10 - n
         button_logout.frame = CGRect(x: x, y: y, width: logoutSize.width, height: logoutSize.height)
-        x = x - 10 - loginSize.width
         button_login.frame = CGRect(x: x, y: y, width: loginSize.width, height: loginSize.height)
         x = x - 10 - labelSwitchSize.width
         labelSwitch.frame = CGRect(x: x, y: y, width: labelSwitchSize.width, height: labelSwitchSize.height)
@@ -83,10 +88,12 @@ class CustomView: UIView {
     @objc func loginButtonEvent(_ sender: UIButton){
         button_login.isHidden = true
         button_logout.isHidden = false
+        setNeedsLayout()
     }
     //ログアウトボタンタップイベント
     @objc func logoutButtonEvent(_ sender: UIButton){
         button_login.isHidden = false
         button_logout.isHidden = true
+        setNeedsLayout()
     }
 }

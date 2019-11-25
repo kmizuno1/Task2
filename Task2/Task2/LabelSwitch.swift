@@ -32,7 +32,7 @@ class LabelSwitch: UIView {
         let size = _switch.sizeThatFits( CGSize(width: w, height: h))
 
          //ラベルとスイッチのframeをセット
-        _label.frame = CGRect(x: 0.0, y: 0.0, width: w - size.width, height: h)
+        _label.frame = CGRect(x: 0.0, y: 0.0, width: w - size.width - 5, height: h)
         _switch.frame = CGRect(x: w - size.width, y: 0.0, width: size.width, height: h)
     }
         
